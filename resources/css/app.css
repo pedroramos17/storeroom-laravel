@@ -1,0 +1,419 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+[x-cloak] {
+    display: none;
+}
+
+@layer components {
+.group-btn-form {
+  @apply space-x-4 flex max-md:grid max-md:space-x-0 max-md:gap-4 max-md:w-screen max-md:px-10;
+}
+  .btn-save {
+    @apply bg-save hover:bg-[#2DB57A] rounded-sm w-44 h-10 max-md:w-full;
+  }
+  .btn-cancel {
+    @apply bg-cancel hover:bg-[#E41F07] rounded-sm w-44 h-10 max-md:w-full;
+  }
+  .tag {
+    @apply p-1.5 bg-sky-500 rounded-2xl;
+  }
+  .title-card-parent {
+      @apply flex justify-between mx-4 mt-4;
+  }
+  .header {
+      @apply ml-[130px] font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight;
+  }
+  .navbar {
+      @apply fixed top-0 left-0 right-0 z-10 flex flex-row items-center justify-end gap-x-5 bg-header h-[50px] pr-[14px];
+  }
+  .menuButton {
+      @apply text-white text-xl font-bold absolute left-4 cursor-pointer;
+  }
+  .searchbar {
+      @apply w-[660px] textfield placeholder:text-textFieldPlaceholder;
+  }
+  .textfield {
+      @apply h-[28px] bg-transparent border-b border-b-white border-x-transparent border-t-transparent text-white outline-none rounded-sm;
+  }
+  .disabledField {
+      @apply border-b-textFieldDisabled border-x-transparent border-t-transparent border-dashed text-textFieldPlaceholder placeholder:text-textFieldPlaceholder;
+  }
+  .disabledText {
+    @apply text-textFieldPlaceholder;
+  }
+  .card {
+      @apply grid pb-4 px-5 pt-3 space-y-6 rounded-xl;
+  }
+  .titleCard {
+      @apply text-white text-lg font-medium;
+  }
+
+  ::-webkit-scrollbar {
+      width: 18px;
+      background: #1f3137;
+  }
+
+  ::-webkit-scrollbar-track {
+      background: #1f2937;
+  }
+
+  ::-webkit-scrollbar-thumb {
+      background: #1a222e;
+      border-radius: 10px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+      background: #35465e;
+  }
+}
+
+@layer base {
+  /* Table cells */
+
+  td {
+    padding: 16px 0 16px 0;
+  }
+
+  tbody tr:nth-of-type(odd) {
+    background-color: #22223f;
+  }
+
+  /* Layout cards */
+
+  .cardsBox .card {
+      margin-bottom: 18px;
+  }
+
+  /* Auto fill chrome/safari */
+
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  textarea:-webkit-autofill,
+  textarea:-webkit-autofill:hover,
+  textarea:-webkit-autofill:focus,
+  select:-webkit-autofill,
+  select:-webkit-autofill:hover,
+  select:-webkit-autofill:focus {
+      -webkit-text-fill-color: white;
+      -webkit-box-shadow: 0 0 0px 1000px #0369a1 inset;
+  }
+
+  /* Transition of placeholder to label */
+
+  .inputBox {
+      position: relative;
+      @apply h-[28px];
+  }
+
+  .inputBox input {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+  }
+
+  .inputBox label {
+      @apply text-white;
+      position: absolute;
+      transition: 0.2s;
+      pointer-events: none;
+  }
+
+  .inputBox input:focus ~ label,
+  .inputBox input:not(:placeholder-shown) ~ label {
+      transform: translateY(-18px);
+      font-size: 12px;
+  }
+
+  /* Buttons check in & out  */
+
+  .check input[type="radio"] {
+      display: none;
+  }
+
+  .check span {
+      @apply inline-block w-48 h-10 bg-buttonCheck text-white rounded-sm text-center align-middle pt-2;
+  }
+
+  .check input[type="radio"]:checked + span {
+      @apply bg-buttonChecked text-textButtonChecked;
+  }
+
+  .check input[type="radio"]:hover:not(:checked) + span {
+      cursor: pointer;
+  }
+}
+
+/* dashboard */
+@import 'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet';
+
+:root {
+	--dk-gray-100: #F3F4F6;
+	--dk-gray-200: #E5E7EB;
+	--dk-gray-300: #D1D5DB;
+	--dk-gray-400: #9CA3AF;
+	--dk-gray-500: #6B7280;
+	--dk-gray-600: #4B5563;
+	--dk-gray-700: #374151;
+	--dk-gray-800: #1F2937;
+	--dk-gray-900: #111827;
+	--dk-dark-bg: #313348;
+	--dk-darker-bg: #2a2b3d;
+	--navbar-bg-color: #6f6486;
+	--sidebar-bg-color: #252636;
+	--sidebar-width: 250px;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	font-family: 'Inter', sans-serif;
+	background-color: var(--dk-darker-bg);
+	font-size: .925rem;
+}
+
+#wrapper {
+	transition: all .3s ease-in-out;
+}
+
+#wrapper.fullwidth {
+	margin-left: 0;
+}
+
+
+/** --------------------------------
+ -- welcome
+-------------------------------- */
+.welcome {
+	color: var(--dk-gray-300);
+}
+
+.welcome .content {
+	background-color: var(--dk-dark-bg);
+}
+
+.welcome p {
+	color: var(--dk-gray-400);
+}
+
+
+
+
+/** --------------------------------
+ -- Statistics
+-------------------------------- */
+.statistics {
+	color: var(--dk-gray-200);
+}
+
+.statistics .box {
+	background-color: var(--dk-dark-bg);
+}
+
+.statistics .box i {
+	width: 60px;
+	height: 60px;
+	line-height: 60px;
+}
+
+.statistics .box p {
+	color: var(--dk-gray-400);
+}
+
+
+
+
+/** --------------------------------
+ -- Charts
+-------------------------------- */
+.charts .chart-container {
+	background-color: var(--dk-dark-bg);
+}
+
+.charts .chart-container h3 {
+	color: var(--dk-gray-400)
+}
+
+
+
+
+/** --------------------------------
+ -- users
+-------------------------------- */
+.admins .box .admin {
+	background-color: var(--dk-dark-bg);
+}
+
+.admins .box h3 {
+	color: var(--dk-gray-300);
+}
+
+.admins .box p {
+	color: var(--dk-gray-400)
+}
+
+
+
+
+/** --------------------------------
+ -- statis
+-------------------------------- */
+.statis {
+	color: var(--dk-gray-100);
+}
+
+.statis .box {
+	position: relative;
+	overflow: hidden;
+	border-radius: 3px;
+}
+
+.statis .box h3:after {
+	content: "";
+	height: 2px;
+	width: 70%;
+	margin: auto;
+	background-color: rgba(255, 255, 255, 0.12);
+	display: block;
+	margin-top: 10px;
+}
+
+.statis .box i {
+	position: absolute;
+	height: 70px;
+	width: 70px;
+	font-size: 22px;
+	padding: 15px;
+	top: -25px;
+	left: -25px;
+	background-color: rgba(255, 255, 255, 0.15);
+	line-height: 60px;
+	text-align: right;
+	border-radius: 50%;
+}
+
+
+
+
+
+.main-color {
+	color: #ffc107
+}
+
+/** --------------------------------
+ -- Please don't do that in real-world projects!
+ -- overwrite Bootstrap variables instead.
+-------------------------------- */
+
+.navbar {
+	background-color: var(--navbar-bg-color) !important;
+	border: none !important;
+}
+.navbar .dropdown-menu {
+	right: auto !important;
+	left: 0 !important;
+}
+.navbar .navbar-nav>li>a {
+	color: #EEE !important;
+	line-height: 55px !important;
+	padding: 0 10px !important;
+}
+.navbar .navbar-brand {color:#FFF !important}
+.navbar .navbar-nav>li>a:focus,
+.navbar .navbar-nav>li>a:hover {color: #EEE !important}
+
+.navbar .navbar-nav>.open>a,
+.navbar .navbar-nav>.open>a:focus,
+.navbar .navbar-nav>.open>a:hover {background-color: transparent !important; color: #FFF !important}
+
+.navbar .navbar-brand {line-height: 55px !important; padding: 0 !important}
+.navbar .navbar-brand:focus,
+.navbar .navbar-brand:hover {color: #FFF !important}
+.navbar>.container .navbar-brand, .navbar>.container-fluid .navbar-brand {margin: 0 !important}
+@media (max-width: 767px) {
+	.navbar>.container-fluid .navbar-brand {
+		margin-left: 15px !important;
+	}
+	.navbar .navbar-nav>li>a {
+		padding-left: 0 !important;
+	}
+	.navbar-nav {
+		margin: 0 !important;
+	}
+	.navbar .navbar-collapse,
+	.navbar .navbar-form {
+		border: none !important;
+	}
+}
+
+.navbar .navbar-nav>li>a {
+	float: left !important;
+}
+.navbar .navbar-nav>li>a>span:not(.caret) {
+	background-color: #e74c3c !important;
+	border-radius: 50% !important;
+	height: 25px !important;
+	width: 25px !important;
+	padding: 2px !important;
+	font-size: 11px !important;
+	position: relative !important;
+	top: -10px !important;
+	right: 5px !important
+}
+.dropdown-menu>li>a {
+	padding-top: 5px !important;
+	padding-right: 5px !important;
+}
+.navbar .navbar-nav>li>a>i {
+	font-size: 18px !important;
+}
+
+
+
+
+/* Start media query */
+
+@media (max-width: 767px) {
+	#wrapper {
+		margin: 0 !important
+	}
+	.statistics .box {
+		margin-bottom: 25px !important;
+	}
+	.navbar .navbar-nav .open .dropdown-menu>li>a {
+		color: #CCC !important
+	}
+	.navbar .navbar-nav .open .dropdown-menu>li>a:hover {
+		color: #FFF !important
+	}
+	.navbar .navbar-toggle{
+		border:none !important;
+		color: #EEE !important;
+		font-size: 18px !important;
+	}
+	.navbar .navbar-toggle:focus, .navbar .navbar-toggle:hover {background-color: transparent !important}
+}
+
+
+::-webkit-scrollbar {
+	background: transparent;
+	width: 5px;
+	height: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+	background-color: #3c3f58;
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background-color: rgba(0, 0, 0, 0.3);
+}
+
+/* end dashboard */
