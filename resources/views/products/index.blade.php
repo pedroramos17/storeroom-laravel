@@ -1,7 +1,7 @@
 <x-app-layout>
   <x-slot name="header">
     <h2 class="header">
-      {{ __('Lista de itens') }}
+      {{ __('Lista de produtos') }}
     </h2>
   </x-slot>
 
@@ -11,12 +11,13 @@
         <div class="mt-4">
           <div class="space-y-4 mx-4">
             <div class="title-card-parent mx-0">
-              <h1 class="mt-2 text-white font-regular text-3xl">Lista de itens</h1>
+              <h1 class="mt-2 text-white font-regular text-2xl font-bold">Lista de produtos</h1>
+              <a href='{{ route('products.create')}}'><div class="add-icon mt-4 mr-2"></div></a>
             </div>
             <div class="relative min-w-full overflow-auto py-4 bg-darkPrimary text-white">
               <table class="table-auto w-[200%]">
-                <thead class="border-b border-[#606060] sticky top-0">
-                  <tr class="divide-x text-lg">
+                <thead>
+                  <tr class="divide-x-2 divide-[#2a3647] font-medium text-base">
                     <th>ID</th>
                     <th>Nome</th>
                     <th>Descrição</th>
@@ -26,8 +27,8 @@
                     <th>Última atualização</th>
                     <th>Razão de guarda</th>
                     <th>Tags</th>
-                    <th>Link da Imagem</th>
                     <th>Código</th>
+                    <th>Link da Imagem</th>
                     <th>Prazo de guarda</th>
                     <th>Prioridade</th>
                     <th>Adquirido em</th>
@@ -38,20 +39,20 @@
                   </tr>
                 </thead>
                 </div>
-                <tbody class="text-[1.1em]">
+                <tbody>
                   @foreach($products as $product)
                       @php
                         $user = $product->find($product->id)->relUsers;
                         $tags = $product->relTags;
                       @endphp
-                        <tr class="hover:bg-[#1c1c1c] cursor-pointer h-12" onclick="window.location='{{ route('product.show', $product) }}'">
+                        <tr class="hover:bg-[#3d4653] cursor-pointer h-12" onclick="window.location='{{ route('products.update', $product) }}'">
                           <td>{{$product->id}}</td>
                           <td>{{$product->name}}</td>
                           <td>{{$product->description}}</td>
                           <td>{{$product->location}}</td>
-                          <td>{{$product->check}}</td>
+                          <td>{{$product->stored ? 'Guardado' : 'Retirado'}}</td>
                           <td>{{$product->created_at}}</td>
-                          <td>{{$product->update_at}}</td>
+                          <td>{{$product->updated_at}}</td>
                           <td>{{$product->hold_reason}}</td>
                           <td class="tags">
                             @foreach ($tags as $tag)

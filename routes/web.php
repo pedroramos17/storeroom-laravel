@@ -27,12 +27,13 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
-    Route::get('produtos', [ProductController::class, 'index'])->name('product.index');
-    Route::get('produtos/criar', [ProductController::class, 'create'])->name('product.create');
-    Route::post('produtos', [ProductController::class, 'store'])->name('product.store');
-    Route::get('produtos/{product}', [ProductController::class, 'show'])->name('product.show');
-    Route::put('produtos/{product}', [ProductController::class, 'update'])->name('product.update');
-    Route::delete('produtos/{product}', [ProductController::class, 'destroy'])->name('product.destroy');
+    Route::get('products/search', [ProductController::class, 'search'])->name('products.search');
+    Route::get('products', [ProductController::class, 'index'])->name('products.index');
+    Route::get('products/create', [ProductController::class, 'create'])->name('products.create');
+    Route::post('products', [ProductController::class, 'store'])->name('products.store');
+    Route::get('products/{product}', [ProductController::class, 'show'])->name('products.show');
+    Route::put('products/{product}', [ProductController::class, 'update'])->name('products.update');
+    Route::delete('products/{product}', [ProductController::class, 'destroy'])->name('products.destroy');
 
-    Route::get('pesquisa', [SearchController::class, 'index'])->name('search.index');
+    Route::get('search', [SearchController::class, 'index'])->name('search.index');
 });

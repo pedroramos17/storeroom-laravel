@@ -32,13 +32,16 @@ class ProductController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
+
+      $request->validate([
+        'stored' => 'required|boolean',
+    ]);
+
       Product::create([
         'name'=>$request->name,
         'description'=>$request->description,
         'location'=>$request->location,
-        'check'=>$request->check,
-        'created_at'=>$request->created_at,
-        'updated_at'=>$request->update_at,
+        'stored'=> $request->stored,
         'hold_reason'=>$request->hold_reason,
         'code'=>$request->code,
         'image'=>$request->image,
@@ -59,7 +62,7 @@ class ProductController extends Controller
               $product->relTags()->sync($newTag->id);
           }
       }
-      return to_route('product.create');
+      return to_route('products.index');
     }
 
     /**
@@ -68,7 +71,7 @@ class ProductController extends Controller
     public function show(Product $product): View
     {
       $tags = Product::findOrFail($product->id)->relTags;
-      return view('products.create', compact('product', 'tags'));
+      return view('products.update', compact('product', 'tags'));
     }
 
     /**
@@ -81,7 +84,7 @@ class ProductController extends Controller
 
       $product->relTags()->sync($request->tags);
 
-      return redirect()->route('product.index')->with('success', 'Item atualizado com sucesso!');
+      return redirect()->route('products.index')->with('success', 'Item atualizado com sucesso!');
     }
 
     /**
@@ -91,6 +94,13 @@ class ProductController extends Controller
     {
       $product->relTags()->detach();
       $product->delete();
-      return redirect()->route('product.index')->with('success', 'Item excluído com sucesso!');
+      return redirect()->route('products.index')->with('success', 'Item excluído com sucesso!');
+    }
+
+    public function search(Request $request)
+    {
+      $query = $request->input('query');
+      $products = Product::search($query)->get();
+      return view('products.search', compact('products', 'query'));
     }
 }
