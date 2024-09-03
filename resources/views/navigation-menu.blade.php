@@ -13,16 +13,16 @@
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
-                        {{ __('Dashboard') }}
+                        {{ __('Painel de Controle') }}
                     </x-nav-link>
-                    <x-nav-link href="{{ route('search.index') }}" :active="request()->routeIs('search.index')">
+                    <x-nav-link href="{{ route('products.search') }}" :active="request()->routeIs('products.search')">
                         {{ __('Pesquisar') }}
                     </x-nav-link>
-                    <x-nav-link href="{{ route('product.index') }}" :active="request()->routeIs('product.index')">
-                        {{ __('Lista de itens') }}
+                    <x-nav-link href="{{ route('products.index') }}" :active="request()->routeIs('products.index')">
+                        {{ __('Lista de Produtos') }}
                     </x-nav-link>
-                    <x-nav-link href="{{ route('product.create') }}" :active="request()->routeIs('product.create')">
-                        {{ __('Novo Item') }}
+                    <x-nav-link href="{{ route('products.create') }}" :active="request()->routeIs('products.create')">
+                        {{ __('Novo Produto') }}
                     </x-nav-link>
                 </div>
             </div>
@@ -149,16 +149,16 @@
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
             <x-responsive-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
-                {{ __('Dashboard') }}
+                {{ __('Painel de Controle') }}
             </x-responsive-nav-link>
-            <x-responsive-nav-link href="{{ route('search.index') }}" :active="request()->routeIs('search.index')">
+            <x-responsive-nav-link href="{{ route('products.search') }}" :active="request()->routeIs('products.search')">
                 {{ __('Pesquisar') }}
             </x-responsive-nav-link>
-            <x-responsive-nav-link href="{{ route('product.index') }}" :active="request()->routeIs('product.index')">
-                {{ __('Lista de itens') }}
+            <x-responsive-nav-link href="{{ route('products.index') }}" :active="request()->routeIs('products.index')">
+                {{ __('Lista de Produtos') }}
             </x-responsive-nav-link>
-            <x-responsive-nav-link href="{{ route('product.create') }}" :active="request()->routeIs('product.create')">
-                {{ __('Novo item') }}
+            <x-responsive-nav-link href="{{ route('products.create') }}" :active="request()->routeIs('products.create')">
+                {{ __('Novo Produto') }}
             </x-responsive-nav-link>
         </div>
 
