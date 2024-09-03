@@ -52,11 +52,11 @@
 
   ::-webkit-scrollbar {
       width: 18px;
-      background: #1f3137;
+      background: #64656d;
   }
 
   ::-webkit-scrollbar-track {
-      background: #1f2937;
+      background: #909197;
   }
 
   ::-webkit-scrollbar-thumb {
@@ -70,15 +70,6 @@
 }
 
 @layer base {
-  /* Table cells */
-
-  td {
-    padding: 16px 0 16px 0;
-  }
-
-  tbody tr:nth-of-type(odd) {
-    background-color: #22223f;
-  }
 
   /* Layout cards */
 
@@ -161,8 +152,8 @@
 	--dk-gray-800: #1F2937;
 	--dk-gray-900: #111827;
 	--dk-dark-bg: #313348;
-	--dk-darker-bg: #2a2b3d;
-	--navbar-bg-color: #6f6486;
+	--dk-darker-bg: #111827;
+	--navbar-bg-color: #4d4c50;
 	--sidebar-bg-color: #252636;
 	--sidebar-width: 250px;
 }
@@ -409,7 +400,7 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-	background-color: #3c3f58;
+	background-color: #64656d;
 }
 
 ::-webkit-scrollbar-thumb:hover {

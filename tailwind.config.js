@@ -29,8 +29,8 @@ module.exports = {
         },
         fontFamily: {
             sans: [
-                "Figtree",
                 "Roboto",
+                "Figtree",
                 "sans-serif",
                 ...defaultTheme.fontFamily.sans,
             ],

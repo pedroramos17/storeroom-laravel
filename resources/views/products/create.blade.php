@@ -10,42 +10,35 @@
     </x-slot>
 
     <div class="py-6">
-        <div class="mx-auto sm:px-6 lg:px-8">
-          <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
-            <div class="title-card-parent max-md:grid max-md:justify-center max-md:gap-4">
-              <h1 class="text-white font-regular text-3xl text-center">@if(isset($product)) Editor do item @else Cadastro do item @endif</h1>
-              @if(isset($errors) && count($errors) > 0)
-                <div class="text-center p-4">
-                  @foreach($errors as $error)
-                    <div class="text-red-500">{{$error}}</div>
-                  @endforeach
-                </div>
-              @endif
-              <div class="space-x-4  text-white">
-                <div class="group-btn-form">
-                  @if(isset($product))
-                    <form action="{{ route('product.destroy', $product) }}" method="POST"></form>
-                      @csrf
-                      @method('DELETE')
-                      <button class="btn-cancel order-last" type="submit">Deletar</button>
-                    </form>
-                  @endif
-                @if(isset($product))
-                  <form name="formEdit" id="formEdit" action="{{ route('product.update', $product) }}" method="POST" autocomplete="off">
-                    @csrf
-                    @method('PUT')
-                      <button class="btn-save " type="submit">Atualizar</button>
-                </div>
-                @else
-                  <form name="formCad" id="formCad" action="{{ route('product.store') }}" method="POST" autocomplete="off">
-                  @csrf
-                  @method('POST')
-                  <div class="group-btn-form">
-                    <button class="btn-save" type="submit">Salvar</button>
-                    <button class="btn-cancel" type="reset">Limpar</button>
-                  </div>
-                @endif
+      <div class="mx-auto sm:px-6 lg:px-8">
+        <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
+          <div class="title-card-parent max-md:grid max-md:justify-center max-md:gap-4">
+            <h1 class="text-white font-regular text-3xl text-center">@if(isset($product)) Editor do item @else Cadastro do item @endif</h1>
+            @if(isset($errors) && count($errors) > 0)
+              <div class="text-center p-4">
+                @foreach($errors as $error)
+                  <div class="text-red-500">{{$error}}</div>
+                @endforeach
               </div>
+            @endif
+            <div class="space-x-4  text-white">
+              @if(isset($product))
+            <form name="formEdit" id="formEdit" action="{{ route('product.update', $product) }}" method="POST" autocomplete="off">
+              @csrf
+              @method('PUT')
+              <div class="group-btn-form">
+                <button class="btn-save " type="submit">Atualizar</button>
+                <button class="btn-cancel order-last">Deletar</button>
+              </div>
+            @else
+            <form name="formCad" id="formCad" action="{{ route('product.store') }}" method="POST" autocomplete="off">
+              @csrf
+              @method('POST')
+              <div class="group-btn-form">
+                <button class="btn-save" type="submit">Salvar</button>
+                <button class="btn-cancel" type="reset">Limpar</button>
+              </div>
+            @endif
             </div>
             </div>
             <div class="m-4 cardsBox">
