@@ -21,7 +21,7 @@
                 <form id='formDestroy' name='formDestroy' action={{ route('products.destroy', $product)}} method='POST'>
                     @csrf
                     @method('DELETE')
-                    <button type='submit' class="btn-cancel order-last">Deletar</button>
+                    <button type='submit' class="btn-cancel order-last">Excluir</button>
                   </form>
               <form name="formEdit" id="formEdit" action="{{ route('products.update', $product) }}" method="POST" autocomplete="off">
                 @csrf
