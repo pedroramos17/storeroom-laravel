@@ -16,8 +16,7 @@ return new class extends Migration
           $table->string('name');
           $table->text('description')->nullable();
           $table->string('location')->nullable();
-          $table->enum('check', ['Entrada', 'Saída'])->default('Entrada');
-          $table->timestamps();
+          $table->boolean('stored')->default(true);
           $table->string('hold_reason')->nullable();
           $table->string('code');
           $table->string('image')->nullable();
@@ -27,7 +26,8 @@ return new class extends Migration
           $table->datetime('acquire_date')->nullable();
           $table->string('warranty_term')->nullable();
           $table->string('receipt_link')->nullable();
-
+          $table->timestamps();
+          
           $table->foreignId('user_id')->constrained('users')->onDelete('cascade')->onUpdate('cascade');
         });
     }
