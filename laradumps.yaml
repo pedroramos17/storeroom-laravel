@@ -1,5 +1,5 @@
 app:
-    primary_host: 127.0.0.1
+    primary_host: 172.24.0.1
     secondary_host: host.docker.internal
     port: 9191
     workdir: /var/www/html/
