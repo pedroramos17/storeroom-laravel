@@ -7,11 +7,14 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use App\Models\User;
 use App\Models\Tag;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Laravel\Scout\Searchable;
 
 class Product extends Model
 {
-  use HasFactory, HasUuids, Searchable;
+  use HasUuids;
+  use HasFactory;
+  use Searchable;
 
   protected $fillable = [
     'name',
@@ -41,36 +44,22 @@ class Product extends Model
     'stored' => 'boolean',
   ];
 
-  public function relUsers()
+  public function user(): BelongsTo
   {
-    return $this->belongsTo(User::class, 'user_id');
+    return $this->belongsTo(User::class);
   }
 
-  public function relTags()
+  public function tags()
   {
     return $this->belongsToMany(Tag::class);
   }
 
   public function toSearchableArray()
   {
-    return [
-      'id' => $this->id,
-      'name' => $this->name,
-      'description' => $this->description,
-      'location' => $this->location,
-      'stored' => (boolean) $this->stored,
-      'hold_reason' => $this->hold_reason,
-      'code' => $this->code,
-      'image' => $this->image,
-      'storage_time' => $this->storage_time,
-      'priority' => (int) $this->priority,
-      'acquired_from' => $this->acquired_from,
-      'acquire_date' => $this->acquire_date,
-      'warranty_term' => $this->warranty_term,
-      'receipt_link' => $this->receipt_link,
-      'created_at' => $this->created_at,
-      'updated_at' => $this->updated_at,
-      'user_id' => $this->user_id,
-    ];
+    $array = $this->toArray();
+
+    $array['user_name'] = $this->user->name;
+
+    return $array;
   }
 }
