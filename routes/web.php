@@ -2,7 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
-use App\Http\Controllers\SearchController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,6 +33,4 @@ Route::middleware([
     Route::get('products/{product}', [ProductController::class, 'show'])->name('products.show');
     Route::put('products/{product}', [ProductController::class, 'update'])->name('products.update');
     Route::delete('products/{product}', [ProductController::class, 'destroy'])->name('products.destroy');
-
-    Route::get('search', [SearchController::class, 'index'])->name('search.index');
 });
